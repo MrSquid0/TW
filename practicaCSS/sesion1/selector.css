@@ -1,7 +1,7 @@
 * /* Todos los elementos de la página */
 {
     color: darkred;
-    font-family: arial;
+    font-family: arial,serif;
 }
 
 em /* Todos los elementos em de la página */
@@ -28,7 +28,7 @@ div p /* Cualquier párrafo que sea descendiente
 
 section > h2, section > h3 /* Cualquier título de sección */
 {
-    font-family: impact;
+    font-family: impact,serif;
 }
 
 #primera > h2 /* El título de la sección con id "primera" */
@@ -63,7 +63,7 @@ p > em /* Elemento de tipo em pero solo si están dentro
         de un párrafo */
 {
     padding: 0.7em;
-    font-family: impact;
+    font-family: impact,serif;
 }
 
 section > * /* Elementos de primer nivel dentro de section */
