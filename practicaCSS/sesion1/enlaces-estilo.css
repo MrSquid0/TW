@@ -1,0 +1,30 @@
+a:active
+{
+    background-color: orange;
+}
+
+a:visited
+{
+    color: red;
+}
+
+a:focus
+{
+    font-weight: bold;
+}
+
+a:hover
+{
+   background-color: yellow;
+   color: blue;
+}
+
+a:link
+{
+    color: green;
+}
+
+*
+{
+    text-decoration: none;
+}
