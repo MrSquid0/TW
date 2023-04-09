@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <style type="text/css">
+                label { display:block; }
+            </style>
+            <meta charset="UTF-8">
+            <meta name="Gonzalo">
+            <meta content="HTML">
+            <title>Datos del usuario</title>
+        </head>
+    <body>
+    <form action="procesar.php" method="get" novalidate>
+        <h1>
+            Datos del usuario
+        </h1>
+
+        <label>
+            Usuario
+            <input type="text" name="usuario"
+            placeholder="Obligatorio: id del usuario" required/>
+        </label>
+
+        <label>
+            Clave
+            <input type="password" name="clave"
+            placeholder="Escriba su clave"/>
+        </label>
+
+        <label>
+            Nacionalidad
+            <input type="text" name="pais"
+                   value="España"/>
+        </label>
+
+        <label>
+            E-mail
+            <input type="email" name="email"
+                   placeholder="Escriba su email"/>
+        </label>
+
+        <label>
+            Sexo
+            <select name="sexo">
+                <option>Masculino</option>
+                <option>Fememino</option>
+                <option value="NR" selected>No deseo responder</option>
+            </select>
+        </label>
+
+        <label>
+            Tratamiento de datos
+            <select name="datos">
+                <option value="TOTAL">Acepta el almacenamiento de mis datos y el envío a terceros</option>
+
+                <option value="PARCIAL">Acepta el almacenamiento de mis datos pero no el envío a terceros</option>
+                <option value="NINGUNO" selected>No deseo responder</option>
+            </select>
+        </label>
+
+        <label>
+            Idioma para comunicaciones
+            <input type="radio" name="idioma" value="español"/>
+            Español
+            <input type="radio" name="idioma" value="ingles"/>
+            Inglés
+            <input type="radio" name="idioma" value="frances"/>
+            Francés
+        </label>
+
+        <label>
+            Aficiones:
+            <input type="checkbox" name=“aficiones[]" value="musica"/>
+            La música
+            <input type="checkbox" name="aficiones[]" value="libros"/>
+            Leer libros
+            <input type="checkbox" name="aficiones[]" value="cine"/>
+            El cine
+            <input type="checkbox" name="aficiones[]" value="deporte"/>
+            El deporte
+        </label>
+
+        <label>
+            Fecha de nacimiento
+            <input type="date" name="fecha-nacimiento"/>
+            Fecha de la Semana Santa
+            <input type="week" name="semana-santa">
+        </label>
+
+        <label>
+            <input type="hidden" name="version-formulario" value="001"/>
+        </label>
+
+        <label>
+            <input type="submit" name="boton" value="Enviar datos"/>
+        </label>
+
+    </form>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+* /* Todos los elementos de la página */
+{
+    color: darkred;
+    font-family: arial;
+}
+
+em /* Todos los elementos em de la página */
+{
+    color: orchid;
+}
+
+div p /* Cualquier párrafo que sea descendiente
+        de algún div (a cualquier nivel) */
+{
+    color: burlywood;
+}
+
+.especial /* Cualquier elemento de clase "especial" */
+{
+    background-color: yellow;
+}
+
+.segunda span /* Los span descendientes de elementos
+                de clase "segunda" */
+{
+    font-size: 1.5em;
+}
+
+section > h2, section > h3 /* Cualquier título de sección */
+{
+    font-family: impact;
+}
+
+#primera > h2 /* El título de la sección con id "primera" */
+{
+    color: blue;
+}
+
+.section /* Elementos con clase "section" */
+{
+    border: 1px solid red;
+}
+
+a /* Cualquier enlace */
+{
+    text-decoration: none;
+    border: 1px solid black;
+    color: red;
+}
+
+a:hover /* Estilo de los enlaces al pasar el cursor
+        por encima */
+{
+    color: lightgray;
+}
+
+a:visited /* Enlaces visitados */
+{
+    color: green;
+}
+
+p > em /* Elemento de tipo em pero solo si están dentro
+        de un párrafo */
+{
+    padding: 0.7em;
+    font-family: impact;
+}
+
+section > * /* Elementos de primer nivel dentro de section */
+{
+margin-left: 20px;
+}
+
+:not(div) > p /*Párrafos que no son descendientes directos
+                de un div */
+{
+    font-style: italic;
+}
+
+div p:first-of-type /* El primer párrafo dentro de un div */
+{
+    background-color: lightblue;
+}
+
+div p:first-child /* El primer hijo de un div si es de
+                    tipo p */
+{
+    background-color: gray;
+}
+
+p  strong:nth-of-type(3) /* El tercer strong de cualquier
+                            párrafo */
+{
+    background-color: aqua;
+}
+
+p  strong:nth-last-of-type(2) /* El penúltimo strong de
+                                cualquier párrafo */
+{
+    background-color: blue;
+}
+
+p strong:first-of-type:not(header) /* El primer strong de cualquier párrafo que
+no esté dentro de header */
+{
+    font-size: 2em;
+}
+
+article * /* Cualquier elemento descendiente de un article */
+{
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
+article > :not(:first-child):not(:last-child) /* Descendientes de article excepto el
+                primero y el último */
+{
+    padding: 10px;
+}

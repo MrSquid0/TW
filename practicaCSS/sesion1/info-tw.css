@@ -1,0 +1,62 @@
+body { background-color: moccasin;}
+h1
+{
+    background-color: red;
+    color: white;
+    margin: 0;
+    padding: 5px;
+}
+h2
+{
+    background-color: coral;
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
+}
+div
+{
+    background-color: white;
+    padding: 20px;
+}
+h3
+{
+    margin: 0;
+    background-color: coral;
+    border-radius: 0 15px 0 0;
+    border-right: 10px solid red;
+}
+ul
+{
+    background-color: moccasin;
+    margin: 0;
+    border-radius: 0 0 0 15px;
+    border-left: 10px solid red;
+    list-style-type: none;
+    padding: 10px;
+}
+span
+{
+    font-variant: small-caps;
+    font-weight: bold;
+}
+em
+{
+    color: blue;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+}
+section
+{
+    margin: 10px;
+}
+footer
+{
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 0.7rem;
+}
+p
+{
+    margin: 0;
+}

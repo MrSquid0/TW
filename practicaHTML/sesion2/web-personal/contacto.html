@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de contacto</title>
+</head>
+<body>
+
+<header>
+    <h1>
+        Sitio web de Gonzalo
+    </h1>
+
+    <h2>
+        Página de contacto
+    </h2>
+</header>
+
+<nav>
+    <a href="index.html">Página principal</a>
+    <a href="profesional.html">Página profesional</a>
+    <a href="personal.html">Página personal</a>
+</nav>
+
+<main>
+    <p>
+        Puedes contactar conmigo a través del siguiente formulario:
+    </p>
+
+    <form action="../procesar.php" method="get">
+        <label>
+            Nombre
+            <input type="text" name="nombre"
+                   placeholder="Obligatorio: tu nombre"
+                   required/>
+        </label>
+
+        <label>
+            E-mail
+            <input type="email" name="email"
+                   placeholder="Obligatorio: tu correo"
+                   required/>
+        </label>
+
+        <label>
+            Nacionalidad
+            <input type="text" name="pais"
+                   value="España"/>
+        </label>
+
+        <label>
+            Tu consulta
+            <textarea name="consulta"
+                      placeholder="Escribe tu consulta"></textarea>
+        </label>
+
+        <label>
+            <input type="submit" name="boton" value="Enviar datos"/>
+        </label>
+    </form>
+
+
+</main>
+
+<aside>
+    <h2>
+        Preguntas frecuentes
+    </h2>
+
+    <p>
+        <strong>¿Por qué se creó esta web?</strong>
+        Se nos propuso como último ejercicio de una práctica.
+    </p>
+
+    <p>
+        <strong>¿Cuál es esta asignatura?</strong>
+        La asignatura es Tecnologías Web, perteneciente al
+        grado en Ingeniería Informática de la Universidad
+        de Granada.
+    </p>
+
+    <p>
+        <strong>¿Quién imparte la asignatura?</strong>
+        La asignatura es impartida por el profesor Javier
+        Martínez Baena.
+    </p>
+</aside>
+
+<footer>
+    <p>
+        Copyright 2023 - Autor: Gonzalo López
+    </p>
+</footer>
+
+</body>
+</html>

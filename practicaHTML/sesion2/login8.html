@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <style type="text/css">
+                label { display:block; }
+            </style>
+            <meta charset="UTF-8">
+            <meta name="Gonzalo">
+            <meta content="HTML">
+            <title>Datos del usuario</title>
+        </head>
+    <body>
+    <form action="procesar.php" method="get" novalidate>
+        <h1>
+            Datos del usuario
+        </h1>
+
+        <label>
+            Usuario
+            <input type="text" name="usuario"
+                   value="pepemartin" readonly required/>
+        </label>
+
+        <label>
+            Clave
+            <input type="password" name="clave"
+                   value="mi clave" readonly/>
+        </label>
+
+        <label>
+            Nacionalidad
+            <input type="text" name="pais"
+                   value="España" readonly/>
+        </label>
+
+        <label>
+            E-mail
+            <input type="email" name="email"
+                   value="pepemartin@miservidor.com" readonly/>
+        </label>
+
+        <label>
+            Sexo
+            <select name="sexo">
+                <option selected>Masculino</option>
+                <option disabled>Fememino</option>
+                <option value="NR" disabled>No deseo responder</option>
+            </select>
+        </label>
+
+        <label>
+            Tratamiento de datos
+            <select name="datos">
+                <option value="TOTAL" selected>Acepta el almacenamiento de mis datos y el envío a terceros</option>
+
+                <option value="PARCIAL" disabled>Acepta el almacenamiento de mis datos pero no el envío a terceros</option>
+                <option value="NINGUNO" disabled>No deseo responder</option>
+            </select>
+        </label>
+
+        <label>
+            Idioma para comunicaciones
+            <input type="radio" name="idioma" value="español" disabled/>
+            Español
+            <input type="radio" name="idioma" value="ingles" checked/>
+            Inglés
+            <input type="radio" name="idioma" value="frances" disabled/>
+            Francés
+        </label>
+
+        <label>
+            Aficiones:
+            <input type="checkbox" name=“aficiones[]" value="musica" disabled/>
+            La música
+            <input type="checkbox" name="aficiones[]" value="libros" disabled/>
+            Leer libros
+            <input type="checkbox" name="aficiones[]" value="cine" checked/>
+            El cine
+            <input type="checkbox" name="aficiones[]" value="deporte" disabled/>
+            El deporte
+        </label>
+
+        <label>
+            Fecha de nacimiento
+            <input type="date" name="fecha-nacimiento" value="2000-01-01" readonly/>
+            Fecha de la Semana Santa
+            <input type="week" name="semana-santa" value="2023-W18" readonly>
+        </label>
+
+        <label>
+            <input type="hidden" name="version-formulario" value="001"/>
+        </label>
+
+        <label>
+            <input type="submit" name="boton" value="Enviar datos"/>
+        </label>
+
+    </form>
+    </body>
+</html>

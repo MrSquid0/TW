@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <style type="text/css">
+                label { display:block; }
+            </style>
+            <meta charset="UTF-8">
+            <meta name="Gonzalo">
+            <meta content="HTML">
+            <title>Datos del usuario</title>
+        </head>
+    <body>
+    <form action="procesar.php" method="get" novalidate>
+        <h1>
+            Datos del usuario
+        </h1>
+
+        <label>
+            Usuario
+            <input type="text" name="usuario"
+            placeholder="Obligatorio: id del usuario" required/>
+        </label>
+
+        <label>
+            Clave
+            <input type="password" name="clave"
+            placeholder="Escriba su clave"/>
+        </label>
+
+        <label>
+            Nacionalidad
+            <input type="text" name="pais"
+                   value="España"/>
+        </label>
+
+        <label>
+            E-mail
+            <input type="email" name="email"
+                   placeholder="Escriba su email"/>
+        </label>
+
+        <label>
+            Sexo
+            <select name="sexo">
+                <option>Masculino</option>
+                <option>Fememino</option>
+                <option value="NR" selected>No deseo responder</option>
+            </select>
+        </label>
+
+        <label>
+            Tratamiento de datos
+            <select name="datos">
+                <option value="TOTAL">Acepta el almacenamiento de mis datos y el envío a terceros</option>
+
+                <option value="PARCIAL">Acepta el almacenamiento de mis datos pero no el envío a terceros</option>
+                <option value="NINGUNO" selected>No deseo responder</option>
+            </select>
+        </label>
+
+        <label>
+            <input type="submit" name="boton" value="Enviar datos"/>
+        </label>
+    </form>
+    </body>
+</html>
