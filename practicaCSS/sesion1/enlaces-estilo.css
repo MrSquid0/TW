@@ -1,6 +1,6 @@
-a:active
+a:link
 {
-    background-color: orange;
+    color: green;
 }
 
 a:visited
@@ -8,23 +8,23 @@ a:visited
     color: red;
 }
 
+a:hover
+{
+    background-color: yellow;
+    color: blue;
+}
+
+a:active
+{
+    background-color: orange;
+}
+
 a:focus
 {
     font-weight: bold;
 }
 
-a:hover
-{
-   background-color: yellow;
-   color: blue;
-}
-
-a:link
-{
-    color: green;
-}
-
-*
+a
 {
     text-decoration: none;
 }
