@@ -1,0 +1,45 @@
+nav {
+    border: 5px solid black;
+    width: 80%;
+    margin: auto;
+}
+
+p
+{
+    display: inline-block;
+    margin: 0;
+    background-color: lightgray;
+    box-sizing: border-box;
+}
+
+.primero {
+    border: 5px solid red;
+    text-align: left;
+    width: 20%;
+}
+
+.primero::before{
+    content: "<<";
+}
+
+.medio {
+    border: 5px solid greenyellow;
+    text-align: center;
+    width: 60%;
+}
+
+.final {
+    border: 5px solid blue;
+    text-align: end;
+    width: 20%;
+}
+
+.final::after {
+    content: ">>";
+}
+
+nav, p
+{
+    padding: 10px;
+}
+

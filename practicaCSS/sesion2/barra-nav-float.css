@@ -1,0 +1,47 @@
+nav {
+    border: 5px solid black;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+nav, p
+{
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+p
+{
+    margin: 0;
+    background-color: lightgray;
+    float: left;
+}
+
+.primero {
+    border: 5px solid red;
+    text-align: left;
+    width: 20%;
+}
+
+.primero::before{
+    content: "<<";
+}
+
+.medio {
+    border: 5px solid greenyellow;
+    text-align: center;
+    width: 60%;
+}
+
+.final {
+    border: 5px solid blue;
+    text-align: right;
+    width: 20%;
+}
+
+.final::after {
+    content: ">>";
+}
+
