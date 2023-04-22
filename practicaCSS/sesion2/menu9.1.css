@@ -1,0 +1,49 @@
+.menu {
+    background-color: moccasin;
+    padding: 20px;
+    text-align: left;
+}
+
+.menu li {
+    display: inline-block;
+    margin: 8px;
+    position: relative;
+}
+
+li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+li:hover > ul {
+    display: block;
+}
+
+ul ul {
+    left: 100%;
+    top: 0;
+}
+
+li:hover
+{
+    transform: scale(1.2);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    background-color: dodgerblue;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+a:hover {
+    background-color: darkred;
+}
+
+.activo {
+    background-color: darkblue;
+}

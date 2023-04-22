@@ -1,0 +1,163 @@
+.web{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+header
+{
+    display: flex;
+    flex-direction: column;
+    background-color: mediumslateblue;
+    color: white;
+    padding-left: 15px;
+}
+
+header h1
+{
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+header h2
+{
+    margin-top: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+nav
+{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 200px;
+    border: 1px solid lightgray;
+    background-color: whitesmoke;
+    margin-bottom: 5px;
+}
+
+nav ul
+{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style: none;
+    height: 20px;
+    margin: 2px;
+}
+
+nav li
+{
+    margin: 0 1rem;
+}
+
+a
+{
+    text-decoration: none;
+    color: mediumslateblue;
+}
+
+a:hover
+{
+    background-color: mediumslateblue;
+    color: white;
+    padding: 2px;
+}
+
+h2
+{
+    font-size: large;
+    color: mediumslateblue;
+}
+
+main
+{
+    flex: 1;
+}
+
+#primer-parrafo
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.imagen
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main img
+{
+    width: 600px;
+    max-width: 100%;
+}
+
+.imagen
+{
+    display: flex;
+    align-items: center;
+}
+
+aside {
+    flex: 0 0 200px;
+    margin-left: 20px;
+    background-color: whitesmoke;
+    height: 100%;
+    padding-left: 5px;
+}
+
+aside ul
+{
+    list-style: square;
+    color: red;
+}
+
+footer
+{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width:599px) {
+    .interes {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    main {
+        order: 2;
+    }
+
+    aside {
+        order: 1;
+        flex-basis: 100%;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    aside h2{
+        display: none;
+    }
+
+    footer{
+        margin-top: 5px;
+        background-color: lightgray;
+    }
+}
+
+@media screen and (min-width:599px) {
+    .interes{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+    }
+}

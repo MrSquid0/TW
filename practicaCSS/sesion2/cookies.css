@@ -1,0 +1,14 @@
+#condiciones
+{
+    background-color: mediumseagreen;
+    font-size: xx-large;
+    text-align: center;
+    padding-bottom: 10px;
+    position: fixed;
+    bottom: 0;
+}
+
+button
+{
+    justify-content: center;
+}

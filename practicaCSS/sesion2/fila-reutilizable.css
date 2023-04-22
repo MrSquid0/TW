@@ -1,4 +1,6 @@
-.fila3, .fila2{
+.fila{
     margin: 10px;
     text-align: center;
+    max-width: 100%;
+    height: auto;
 }

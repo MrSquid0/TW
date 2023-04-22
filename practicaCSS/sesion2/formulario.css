@@ -1,0 +1,111 @@
+.formulario
+{
+    text-align: center;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+h1
+{
+    font-weight: bold;
+    font-size: medium;
+    text-align: left;
+}
+
+.subform h1
+{
+    display: inline-block;
+    text-align: right;
+    color: darkgray;
+
+}
+
+.subform
+{
+    border: 1px solid grey;
+    margin: 10px;
+    position: relative;
+    height: 150px;
+}
+
+.datos
+{
+    text-align: center;
+    width: 50%;
+    display: inline-block;
+    border-left: 1px dotted lightgray;
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+.botones
+{
+    display: inline-block;
+    text-align: center;
+    border: 1px solid grey;
+    width: 70%;
+    padding: 5px;
+}
+
+.formulario input, .formulario select
+{
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 7px;
+    width: 80%;
+    display: inline-block;
+}
+
+.botones input
+{
+    width: 20%;
+}
+
+.entrada
+{
+    text-align: left;
+}
+
+input[name="nombre"], input[name="apellidos"], input[name="calle"]
+{
+    width: 70%;
+}
+
+input[name="dni"], input[name="poblacion"]{
+    width: 30%;
+}
+
+.formulario select
+{
+    width: 40%;
+}
+
+.formulario label
+{
+    display: block;
+    font-size: xx-small;
+    text-align: left;
+}
+
+.ayuda
+{
+    display: none;
+    font-size: xx-small;
+    color: green;
+}
+
+.subform:hover .ayuda
+{
+    display: inline;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.subform:hover
+{
+    background-color: lightgray;
+}
