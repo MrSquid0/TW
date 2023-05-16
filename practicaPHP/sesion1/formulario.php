@@ -146,19 +146,19 @@
                 <span class="input-label">Edad</span>
 
                 <label>
-                    <input type="radio" name="edad" value="menor-12" <?php if ($_GET['edad'] == 'menor-12') echo "checked";?>
+                    <input type="radio" name="edad" value="menor-12" <?php if (isset($_GET['edad'])){ if(($_GET['edad'] == 'menor-12')) echo "checked";}?>
                     <?php if ($enviadoCorrectamente) echo "disabled"; ?>/>
                     Menor de 12 años
                 </label>
 
                 <label>
-                    <input type="radio" name="edad" value="12-18" <?php if ($_GET['edad'] == '12-18') echo "checked";?>
+                    <input type="radio" name="edad" value="12-18" <?php if (isset($_GET['edad'])){ if(($_GET['edad'] == '12-18')) echo "checked";}?>
                     <?php if ($enviadoCorrectamente) echo "disabled"; ?>/>
                     Entre 12 y 18 años
                 </label>
 
                 <label>
-                    <input type="radio" name="edad" value="mayor-18" <?php if ($_GET['edad'] == 'mayor-18') echo 'checked';?>
+                    <input type="radio" name="edad" value="mayor-18" <?php if (isset($_GET['edad'])){ if(($_GET['edad'] == 'mayor-18')) echo "checked";}?>
                     <?php if ($enviadoCorrectamente) echo "disabled"; ?>/>
                     Mayor de 18 años
                 </label>
