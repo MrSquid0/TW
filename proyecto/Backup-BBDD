@@ -1,0 +1,223 @@
+DROP TABLE `Comentarios`;
+
+CREATE TABLE `Comentarios` (
+  `fecha` datetime NOT NULL,
+  `comentario` text COLLATE utf8_spanish_ci NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idIncidencia` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Comentarios de las incidencias.';
+
+DROP TABLE `FotosIncidencias`;
+
+CREATE TABLE `FotosIncidencias` (
+  `rutaImagen` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `idIncidencia` int(11) NOT NULL,
+  `idImagen` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`rutaImagen`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Fotografias de las incidencias';
+
+DROP TABLE `Incidencias`;
+
+CREATE TABLE `Incidencias` (
+  `titulo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `lugar` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha` datetime NOT NULL,
+  `palabrasClave` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` varchar(15) COLLATE utf8_spanish_ci NOT NULL COMMENT '''Pendiente'', ''Comprobada'', ''Tramitada'', ''Irresoluble'' o ''Resuelta''',
+  `positivas` int(11) NOT NULL,
+  `negativas` int(11) NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Incidencias del municipio';
+
+DROP TABLE `Logs`;
+
+CREATE TABLE `Logs` (
+  `fecha` datetime NOT NULL,
+  `accion` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+DROP TABLE `Usuarios`;
+
+CREATE TABLE `Usuarios` (
+  `nombre` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `clave` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `rol` varchar(15) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Colaborador o Administrador',
+  `estado` varchar(15) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Activo o Pendiente',
+  `imagen` varchar(40) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Ruta de la imagen',
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Datos de los usuarios.';
+
+DROP TABLE `Valoraciones`;
+
+CREATE TABLE `Valoraciones` (
+  `idUsuario` int(11) NOT NULL,
+  `idIncidencia` int(11) NOT NULL,
+  `tipo` varchar(7) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 10:39:07', 'Os habeis dado cuenta tambien, vosotros, los de la zona?', '2', '1', '1');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 10:42:55', 'Yo no vivo en La Chana. Sin embargo, tengo conocidos viviendo alli que me han comentado tambien la situacion... Espero que se ponga remedio pronto!', '4', '1', '2');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 10:51:03', 'Lamentamos profundamente esta situacion. Desde el Ayuntamiento de Limpiolandia intentaremos mejorar notablemente esta situacion en los proximos dias. Saludos y disculpe las molestias.', '1', '2', '3');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 10:53:21', 'Oye Maria, perdona que te diga, pero yo como amante de los animales, no todos somos asi. Asi que, por favor, te pido que no generalices.', '6', '2', '4');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 10:54:31', 'Yo tambien me entere anoche... Vaya panorama amigos.', '6', '1', '5');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:01:04', 'Mas dinero en perros??!! Como si no fuese ya suficiente! BASTA YA! Queremos limpieza en nuestras calles.', '4', '3', '6');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:01:48', 'Alberto, tu has sido quien se ha sentido ofendido solo. Sera por algo, yo solo digo eso...', '4', '2', '7');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:05:13', 'Entendemos su queja y le informamos que ya estamos gestionandola. Desde la Concejalia Urbana, nos han comunicado que habra una partida reservada de los fondos del Ayuntamiento para una remodelacion completa del parque canino actual. Sentimos las molestias.', '0', '2', '8');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:14:09', 'Donde se vende exactamente? Soy padre, es para no acercar a mis hijos por la zona.', '3', '1', '9');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:16:09', 'Lamentamos profundamente esta situacion y ya estamos en contacto con los responsables de telecomunicaciones del Ayuntamiento para solventar este problema lo antes posible.', '0', '4', '10');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:18:35', 'A mi me encanta los perros y tambien me gustaría que el Ayuntamiento invirtiese mas en parques de ocio caninos. ¡Los peludos se lo merecen!', '5', '3', '11');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:28:05', 'Daniel... Para una vez al año que aqui se celebra algo. Venga ya hombre, las fiestas de Limpiolandia que nunca cambien!', '2', '5', '12');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:28:35', 'Os seguire informando sobre como evoluciona la situación. Pero pf, que repelús!', '2', '1', '13');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:29:14', 'Yo con ese internet me moriria. Que vergüenza que lleves aguantando tanto esta situación...', '2', '4', '14');
+INSERT INTO `Comentarios` (`fecha`, `comentario`, `idUsuario`, `idIncidencia`, `id`) VALUES ('2023-06-27 11:30:27', 'Entendemos su queja y la trasladamos al departamento correspondiente. Llevamos trabajando en este tema durante ya tiempo, pero se nos hace imposible lidiar con la juventud de hoy en dia. Le informo de que se ampliara el dispositivo de seguridad para el año que viene.', '1', '5', '15');
+
+INSERT INTO `FotosIncidencias` (`rutaImagen`, `idIncidencia`, `idImagen`) VALUES ('./img/incidencias/2-1.jpg', '2', '2-1');
+INSERT INTO `FotosIncidencias` (`rutaImagen`, `idIncidencia`, `idImagen`) VALUES ('./img/incidencias/2-2.jpeg', '2', '2-2');
+INSERT INTO `FotosIncidencias` (`rutaImagen`, `idIncidencia`, `idImagen`) VALUES ('./img/incidencias/3-1.jpg', '3', '3-1');
+INSERT INTO `FotosIncidencias` (`rutaImagen`, `idIncidencia`, `idImagen`) VALUES ('./img/incidencias/3-2.jpg', '3', '3-2');
+INSERT INTO `FotosIncidencias` (`rutaImagen`, `idIncidencia`, `idImagen`) VALUES ('./img/incidencias/4-1.png', '4', '4-1');
+INSERT INTO `FotosIncidencias` (`rutaImagen`, `idIncidencia`, `idImagen`) VALUES ('./img/incidencias/5-1.jpg', '5', '5-1');
+INSERT INTO `FotosIncidencias` (`rutaImagen`, `idIncidencia`, `idImagen`) VALUES ('./img/incidencias/5-2.jpg', '5', '5-2');
+
+INSERT INTO `Incidencias` (`titulo`, `lugar`, `fecha`, `palabrasClave`, `estado`, `positivas`, `negativas`, `descripcion`, `id`, `idUsuario`) VALUES ('Venta masiva de estupefacientes', 'La Chana, Granada', '2023-06-27 10:37:30', 'estupefacientes, droga, inseguridad, policia', 'Resuelta', '3', '0', 'Vengo aqu&iacute; a quejarme de que son m&aacute;s y m&aacute;s los d&iacute;as en los que se presenta una mayor concentraci&oacute;n de j&oacute;venes comprando material no muy l&iacute;cito. Exijo una bastante mayor carga policial en la zona.\r\n\r\nNo incluyo im&aacute;genes por cuestiones de privacidad de los compradores.', '1', '2');
+INSERT INTO `Incidencias` (`titulo`, `lugar`, `fecha`, `palabrasClave`, `estado`, `positivas`, `negativas`, `descripcion`, `id`, `idUsuario`) VALUES ('Residuos org&aacute;nicos de mascotas', 'Recogidas', '2023-06-27 10:46:47', 'limpieza, perros, mascotas', 'Tramitada', '3', '2', 'Me parece una aut&eacute;ntica verg&uuml;enza y tener que estar todo el rato esquivando y oliendo cosas desagradables por culpa de unos due&ntilde;os no muy respetuosos y por un Ayuntamiento que no limpia con frecuencia la v&iacute;a p&uacute;blica. &iexcl;Que limpien diariamente, jolines!', '2', '4');
+INSERT INTO `Incidencias` (`titulo`, `lugar`, `fecha`, `palabrasClave`, `estado`, `positivas`, `negativas`, `descripcion`, `id`, `idUsuario`) VALUES ('Falta de parques caninos', 'Puliana', '2023-06-27 10:58:37', 'perro, diversion, parque, inversion', 'Comprobada', '2', '2', 'Como siempre, Limpiolandia a la cola de todas las ciudades... Estoy cansado de viajar y viajar y siempre me tengo que acabar lamentando porque los limpiolanderos que tenemos perro, no podemos disfrutar en parques destinados a ello. Alcalde, &iquest;cu&aacute;ndo piensa gastarse un m&iacute;sero euro en un parque canino? &iexcl;Ya est&aacute; bien!\r\n\r\nAdjunto el estado lamentable del &uacute;nico parque perruno que hay en Limpiolandia.', '3', '6');
+INSERT INTO `Incidencias` (`titulo`, `lugar`, `fecha`, `palabrasClave`, `estado`, `positivas`, `negativas`, `descripcion`, `id`, `idUsuario`) VALUES ('Sin acceso a internet desde 2020', 'Catedral', '2023-06-27 11:11:19', 'internet, obras, obstruccion, incompetencia, fibra', 'Tramitada', '3', '0', '&iquest;C&oacute;mo puede ser posible que en pleno 2023 no tenga acceso a internet? Pues esta pregunta me la llevo haciendo desde hace ya casi 4 a&ntilde;os. Vivo en pleno centro de Granada y por culpa de los incompetentes obreros del Ayuntamiento, llevo sin acceso a internet todo este tiempo. Todo &quot;por obras de mejora en la v&iacute;a p&uacute;blica&quot;. &iquest;MEJORAS? Necesito internet para trabajar, VIVO DE ELLO. Llevo tres a&ntilde;os en paro y lo &uacute;nico que me dan es un m&oacute;dem 4G el cual me sirve para bien poco.\r\n\r\n&iquest;Cu&aacute;nto tiempo tengo que estar aguantando esto? Estoy a punto de irme de Limpiolandia. Pago mis impuestos religiosamente para que me traten como un aut&eacute;ntico ciudadano de tercera. Basta ya, &iexcl;SINVERG&Uuml;ENZAS!\r\n\r\nAdjunto imagen de test de velocidad para que ve&aacute;is que no miento.', '4', '3');
+INSERT INTO `Incidencias` (`titulo`, `lugar`, `fecha`, `palabrasClave`, `estado`, `positivas`, `negativas`, `descripcion`, `id`, `idUsuario`) VALUES ('Fiestas municipales descontroladas', 'Afueras de Limpiolandia', '2023-06-27 11:25:22', 'fiesta, feria, ruido, desagradable, caos, insomnio', 'Comprobada', '0', '1', 'Las fiestas del municipio son un desastre total. El ruido ensordecedor de la m&uacute;sica, el confeti cubriendo cada rinc&oacute;n y la gente desenfrenada bailando sin control. &iexcl;Necesitamos un poco de paz y organizaci&oacute;n en estas celebraciones! No podemos disfrutar ni descansar en medio de este caos desenfrenado. &iexcl;Por favor, tomen medidas para mejorar esta situaci&oacute;n y hacer de nuestras fiestas una experiencia agradable para todos!\r\n\r\nPor no hablar de toda la basura que dejan en medio... En fin.', '5', '5');
+
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:19:10', 'El usuario  carlosmulero@gmail.com ha sido registrado en el sistema.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:22:45', 'El usuario  miguelopez@hotmail.com ha sido registrado en el sistema.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:28:00', 'El usuario  mangustias16@correo.ugr.es ha sido registrado en el sistema.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:28:43', 'El administrador gonzalo0@correo.ugr.es ha editado el perfil de rociobarragan@correo.ugr.es.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:31:02', 'El usuario  danifernandez@gmail.com ha sido registrado en el sistema.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:33:31', 'El usuario  albertolopez@gmail.com ha sido registrado en el sistema.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:35:19', 'El usuario gonzalo0@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:35:47', 'El usuario carlosmulero@gmail.com ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:37:30', 'El usuario  carlosmulero@gmail.com ha creado una nueva incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:38:34', 'El usuario carlosmulero@gmail.com ha modificado los datos principales de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:39:08', 'El usuario carlosmulero@gmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:40:29', 'El usuario carlosmulero@gmail.com ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:40:47', 'El usuario rociobarragan@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:41:24', 'El usuario rociobarragan@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:41:38', 'El usuario rociobarragan@correo.ugr.es ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:41:42', 'El usuario rociobarragan@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:42:06', 'El usuario mangustias16@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:42:55', 'El usuario mangustias16@correo.ugr.es ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:43:01', 'El usuario mangustias16@correo.ugr.es ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:46:47', 'El usuario  mangustias16@correo.ugr.es ha creado una nueva incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:47:56', 'El usuario mangustias16@correo.ugr.es ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:48:03', 'El usuario mangustias16@correo.ugr.es ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:48:05', 'El usuario mangustias16@correo.ugr.es ha eliminado una foto de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:48:13', 'El usuario mangustias16@correo.ugr.es ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:48:48', 'El usuario mangustias16@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:48:54', 'El usuario gonzalo0@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:49:43', 'El usuario gonzalo0@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:50:11', 'El usuario gonzalo0@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:50:13', 'El usuario gonzalo0@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:50:25', 'El usuario rociobarragan@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:51:03', 'El usuario rociobarragan@correo.ugr.es ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:51:33', 'El usuario rociobarragan@correo.ugr.es ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:51:42', 'El usuario rociobarragan@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:52:24', 'El usuario albertolopez@gmail.com ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:53:21', 'El usuario albertolopez@gmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:53:25', 'El usuario albertolopez@gmail.com ha dado dislike a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:54:03', 'El usuario albertolopez@gmail.com ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:54:31', 'El usuario albertolopez@gmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:58:37', 'El usuario  albertolopez@gmail.com ha creado una nueva incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:59:02', 'El usuario albertolopez@gmail.com ha modificado los datos principales de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:59:54', 'El usuario albertolopez@gmail.com ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:59:58', 'El usuario albertolopez@gmail.com ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 10:59:59', 'El usuario albertolopez@gmail.com ha eliminado una foto de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:00:05', 'El usuario albertolopez@gmail.com ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:00:23', 'El usuario albertolopez@gmail.com ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:00:29', 'El usuario mangustias16@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:00:33', 'El usuario mangustias16@correo.ugr.es ha dado dislike a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:01:04', 'El usuario mangustias16@correo.ugr.es ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:01:48', 'El usuario mangustias16@correo.ugr.es ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:02:35', 'El usuario mangustias16@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:02:48', 'El usuario rociobarragan@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:03:02', 'El usuario rociobarragan@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:03:17', 'El usuario rociobarragan@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:03:30', 'El usuario rociobarragan@correo.ugr.es ha dado dislike a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:03:38', 'El usuario rociobarragan@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:03:47', 'El usuario gonzalo0@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:05:13', 'El usuario gonzalo0@correo.ugr.es ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:05:33', 'El usuario gonzalo0@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:06:17', 'El usuario miguelopez@hotmail.com ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:11:19', 'El usuario  miguelopez@hotmail.com ha creado una nueva incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:12:14', 'El usuario miguelopez@hotmail.com ha modificado los datos principales de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:12:31', 'El usuario miguelopez@hotmail.com ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:13:40', 'El usuario miguelopez@hotmail.com ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:14:09', 'El usuario miguelopez@hotmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:14:19', 'El usuario miguelopez@hotmail.com ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:14:50', 'El usuario miguelopez@hotmail.com ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:14:57', 'El usuario gonzalo0@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:15:08', 'El usuario gonzalo0@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:16:09', 'El usuario gonzalo0@correo.ugr.es ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:16:59', 'El usuario gonzalo0@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:17:04', 'El usuario gonzalo0@correo.ugr.es ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:17:16', 'El usuario gonzalo0@correo.ugr.es ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:17:45', 'El usuario danifernandez@gmail.com ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:18:35', 'El usuario danifernandez@gmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:21:09', 'El usuario danifernandez@gmail.com ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:21:13', 'El usuario danifernandez@gmail.com ha dado dislike a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:25:22', 'El usuario  danifernandez@gmail.com ha creado una nueva incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:26:25', 'El usuario danifernandez@gmail.com ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:26:30', 'El usuario danifernandez@gmail.com ha subido una imagen a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:26:51', 'El usuario danifernandez@gmail.com ha modificado los datos principales de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:27:08', 'El usuario danifernandez@gmail.com ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:27:11', 'El usuario danifernandez@gmail.com ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:27:21', 'El usuario carlosmulero@gmail.com ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:27:32', 'El usuario carlosmulero@gmail.com ha dado dislike a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:28:05', 'El usuario carlosmulero@gmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:28:35', 'El usuario carlosmulero@gmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:28:50', 'El usuario carlosmulero@gmail.com ha dado like a una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:29:14', 'El usuario carlosmulero@gmail.com ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:29:22', 'El usuario carlosmulero@gmail.com ha cerrado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:29:28', 'El usuario rociobarragan@correo.ugr.es ha iniciado sesión.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:30:27', 'El usuario rociobarragan@correo.ugr.es ha comentado en una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:30:47', 'El usuario rociobarragan@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:30:54', 'El usuario rociobarragan@correo.ugr.es ha modificado el estado de una incidencia.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:36:06', 'El usuario gonzalo0@correo.ugr.es ha iniciado sesiÃ³n.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 11:43:22', 'Un administrador ha descargado una copia de la base de datos.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 12:01:33', 'El usuario rociobarragan@correo.ugr.es ha iniciado sesiÃ³n.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 12:01:38', 'Un administrador ha descargado una copia de la base de datos.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 13:30:16', 'El usuario gonzalo0@correo.ugr.es ha iniciado sesiÃ³n.');
+INSERT INTO `Logs` (`fecha`, `accion`) VALUES ('2023-06-27 13:30:28', 'El usuario gonzalo0@correo.ugr.es ha dado like a una incidencia.');
+
+INSERT INTO `Usuarios` (`nombre`, `apellidos`, `clave`, `email`, `direccion`, `telefono`, `rol`, `estado`, `imagen`, `id`) VALUES ('Gonzalo', 'Lopez Castilla', '$2y$10$FnPuiiTg1/uxKuD7bPASl.1UY8g5IRWUImPxn3cvolJ2TG5SEBaiO', 'gonzalo0@correo.ugr.es', 'ETSIIT', '659283192', 'Administrador', 'Activo', './img/usuarios/0.jpg', '0');
+INSERT INTO `Usuarios` (`nombre`, `apellidos`, `clave`, `email`, `direccion`, `telefono`, `rol`, `estado`, `imagen`, `id`) VALUES ('Rocio', 'Barragan Moreno', '$2y$10$o6erGx.bOD5V6ycVJAa4jOCLF9hFDLJOGF3F4e4kylFMItJaYEFE.', 'rociobarragan@correo.ugr.es', 'Calle Pedro Antonio de Alarcon 34, 7D, Granada, GRANADA, Espa&ntilde;a', '633934923', 'Administrador', 'Activo', './img/usuarios/1.jpg', '1');
+INSERT INTO `Usuarios` (`nombre`, `apellidos`, `clave`, `email`, `direccion`, `telefono`, `rol`, `estado`, `imagen`, `id`) VALUES ('Carlos', 'Mulero Haro', '$2y$10$CyfRqkRKlw7Zw7tGVuTKJeQ/QQrYlcgabfC5v3gVD/BeHyEoXkgni', 'carlosmulero@gmail.com', 'Calle La Gaviota 3', '658434543', 'Colaborador', 'Activo', './img/usuarios/2.png', '2');
+INSERT INTO `Usuarios` (`nombre`, `apellidos`, `clave`, `email`, `direccion`, `telefono`, `rol`, `estado`, `imagen`, `id`) VALUES ('Miguel', 'Lopez Martinez', '$2y$10$GWTqWhuedJTsaRfJwRQ6K.VZD2sxP29g67HPJykpfn9OrCcbDgNJC', 'miguelopez@hotmail.com', 'Avenida de Barcelona', '732456232', 'Colaborador', 'Activo', './img/usuarios/3.jpg', '3');
+INSERT INTO `Usuarios` (`nombre`, `apellidos`, `clave`, `email`, `direccion`, `telefono`, `rol`, `estado`, `imagen`, `id`) VALUES ('Maria de las Angustias', 'Izquierdo Garcia', '$2y$10$/epbdwBd98PTDMHS5rig8O2iAk4uynMjsiUXI1BeWcFATBd4Ml8zW', 'mangustias16@correo.ugr.es', 'Camino de Ronda 65', '657433121', 'Colaborador', 'Activo', './img/usuarios/4.png', '4');
+INSERT INTO `Usuarios` (`nombre`, `apellidos`, `clave`, `email`, `direccion`, `telefono`, `rol`, `estado`, `imagen`, `id`) VALUES ('Daniel', 'Fernandez Merida', '$2y$10$6a1XQjbyUAIcn0WMi6VW5eYyr.McUVdOcshM48SgESI2bGx14hd/6', 'danifernandez@gmail.com', 'Calle Alhamar 43, 2C', '657345872', 'Colaborador', 'Activo', './img/usuarios/5.png', '5');
+INSERT INTO `Usuarios` (`nombre`, `apellidos`, `clave`, `email`, `direccion`, `telefono`, `rol`, `estado`, `imagen`, `id`) VALUES ('Alberto', 'Lopez Castilla', '$2y$10$gEmdTY0Sc8pnwqtK/sMcwOU/uqsq8vqYHeph1h7LWv8iXld8h2LbS', 'albertolopez@gmail.com', 'Avenida del 14 de junio 3, 4B', '657432456', 'Colaborador', 'Activo', './img/usuarios/6.png', '6');
+
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('1', '1', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('4', '1', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('1', '2', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('6', '2', 'Dislike');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('6', '1', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('4', '3', 'Dislike');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('1', '3', 'Dislike');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('3', '3', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('3', '2', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('0', '4', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('5', '4', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('5', '2', 'Dislike');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('5', '3', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('2', '5', 'Dislike');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('2', '4', 'Like');
+INSERT INTO `Valoraciones` (`idUsuario`, `idIncidencia`, `tipo`) VALUES ('0', '2', 'Like');
+
