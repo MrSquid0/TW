@@ -1,4 +1,7 @@
 <?php
+const COLOR_ROJO = "rojo";
+const COLOR_AZUL = "azul";
+const MAXIMO_DE_LINEAS = 3;
 session_start();
 ?>
 
@@ -81,8 +84,26 @@ session_start();
         <form method="post" action="">
             <table>
                 <?php
+
+                if (isset($_POST['limpiar'])) {
+                    session_unset();
+                    session_destroy();
+                    header("Location: 3enraya.php");
+                    $_SESSION['turno'] = COLOR_ROJO;
+                    exit;
+                }
+
                 if (!isset($_SESSION['turno'])) {
-                    $_SESSION['turno'] = "rojo";
+                    $_SESSION['turno'] = COLOR_ROJO;
+                }
+                $resultadoEnviado = false;
+                for($i = 0; $i < MAXIMO_DE_LINEAS; $i++){
+                    for($j = 0; $j < MAXIMO_DE_LINEAS; $j++){
+                        if (isset($_POST["poner${i}${j}"])) {
+                            $resultadoEnviado = true;
+                            $_SESSION["tablero"][$i][$j] = $_SESSION['turno'];
+                        }
+                    }
                 }
                 if (!isset($_SESSION['tablero'])) {
                     $_SESSION['tablero'] = array(
@@ -90,197 +111,57 @@ session_start();
                         array('', '', ''),
                         array('', '', '')
                     );
-                } ?>
+                }
+
+                if (gameOver($_SESSION['tablero'], $_SESSION['turno'])) {
+                    echo "<p>¡Enhorabuena, " . $_SESSION['turno'] . "!</p>";
+                }
+                for($i = 0; $i < MAXIMO_DE_LINEAS; $i++){
+                ?>
                 <tr>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner00'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner00">
-                            <?php if (isset($_POST['poner00'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner01'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner01">
-                            <?php if (isset($_POST['poner01'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner02'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner02">
-                            <?php if (isset($_POST['poner02'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                <tr>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner10'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner10">
-                            <?php if (isset($_POST['poner10'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner11'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner11">
-                            <?php if (isset($_POST['poner11'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner12'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner12">
-                            <?php if (isset($_POST['poner12'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                <tr>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner20'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner20">
-                            <?php if (isset($_POST['poner20'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner21'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner21">
-                            <?php if (isset($_POST['poner21'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="submit" class="<?php if (isset($_POST['poner22'])) {
-                            echo "boton-imagen";
-                        } else {
-                            echo "libre boton-imagen";
-                        } ?>" name="poner22">
-                            <?php if (isset($_POST['poner22'])): ?>
-                                <?php if ($_SESSION['turno'] == "rojo") {
-                                    echo "<img src='brojo.png' width='50px'/>";
-                                    $_SESSION['turno'] = "azul";
-                                } else {
-                                    echo "<img src='bazul.png' width='50px'/>";
-                                    $_SESSION['turno'] = "rojo";
-                                }
-                                ?>
-                            <?php else: ?>
-                                <img src="bamarillo.png" width="50px" alt="bamarillo">
-                            <?php endif; ?>
-                        </button>
-                    </td>
+                    <?php for($j = 0; $j < MAXIMO_DE_LINEAS; $j++){
+                    ?>
+                        <td>
+                            <button type="submit" class="<?php if (isset($_SESSION['tablero']) && $_SESSION['tablero'][$i][$j] != '') {
+                                echo "boton-imagen";
+                            } else {
+                                echo "libre boton-imagen";
+                            }
+                            if (gameOver($_SESSION['tablero'], $_SESSION['turno'])) {
+                                echo " ganador";
+                            }
+                            ?>" name="<?php echo "poner${i}${j}";?>" <?php if (gameOver($_SESSION['tablero'], $_SESSION['turno'])){echo "disabled";}?>>
+                                <?php if ($_SESSION["tablero"][$i][$j] != ''): ?>
+                                    <?php if ($_SESSION["tablero"][$i][$j] == COLOR_ROJO) {
+                                        echo "<img src='brojo.png' width='50px'/>";
+                                    } else if ($_SESSION["tablero"][$i][$j] == COLOR_AZUL) {
+                                        echo "<img src='bazul.png' width='50px'/>";
+                                    } else {
+                                        echo "<img src='bamarillo.png' width='50px'/>";
+                                    }
+                                    ?>
+                                <?php else: ?>
+                                    <img src="bamarillo.png" width="50px" alt="bamarillo">
+                                <?php endif; ?>
+                            </button>
+                        </td>
+                    <?php } ?>
+                </tr>
+                <?php } ?>
             </table>
         </form>
     </section>
     <section class="informacion">
         <p>Turno:
             <?php
-            if ($_SESSION['turno'] == "rojo") {
+            if ($resultadoEnviado) {
+                if ($_SESSION['turno'] == COLOR_ROJO) {
+                    $_SESSION['turno'] = COLOR_AZUL;
+                } else {
+                    $_SESSION['turno'] = COLOR_ROJO;
+                }
+            }
+            if ($_SESSION['turno'] == COLOR_ROJO) {
                 echo "<img src='brojo.png' width='25px'/>";
             } else {
                 echo "<img src='bazul.png' width='25px'/>";
@@ -290,45 +171,68 @@ session_start();
     </section>
     <section class="botones">
         <form method="post" action="">
-            <input type="submit" name="limpiar" value="Limpiar"/>
+            <input type="submit" name="limpiar" value="Reiniciar"/>
         </form>
         <?php
         function gameOver($tablero, $jugador)
         {
-            // Filas
-            for ($i = 0; $i < 3; $i++) {
-                if ($tablero[$i][0] === $jugador && $tablero[$i][1] === $jugador && $tablero[$i][2] === $jugador) {
+            // Horizontales
+            $i = 0;
+            while($i < MAXIMO_DE_LINEAS){
+                $line = true;
+                $j = 0;
+                while($line && $j < MAXIMO_DE_LINEAS){
+                    $line = $tablero[$i][$j] == $jugador;
+                    $j++;
+                }
+                if ($line){
                     return true;
+                } else {
+                    $i++;
                 }
             }
 
-            // Columnas
-            for ($j = 0; $j < 3; $j++) {
-                if ($tablero[0][$j] === $jugador && $tablero[1][$j] === $jugador && $tablero[2][$j] === $jugador) {
+            // Verticales
+            $j = 0;
+            $i = 0;
+            while($j < MAXIMO_DE_LINEAS){
+                $line = true;
+                $i = 0;
+                while($line && $i < MAXIMO_DE_LINEAS){
+                    $line = $tablero[$i][$j] == $jugador;
+                    $i++;
+                }
+                if ($line){
                     return true;
+                } else {
+                    $j++;
                 }
             }
 
             // Diagonales
-            if ($tablero[0][0] === $jugador && $tablero[1][1] === $jugador && $tablero[2][2] === $jugador) {
-                return true;
+            $i = 0; $j = 0;
+            $diagonal = true;
+            while($i < MAXIMO_DE_LINEAS){
+                $diagonal = $diagonal && $tablero[$j][$i] == $jugador;
+                $i++;
+                $j++;
             }
-            if ($tablero[0][2] === $jugador && $tablero[1][1] === $jugador && $tablero[2][0] === $jugador) {
+
+            if (!$diagonal){
+                $i = 0; $j = MAXIMO_DE_LINEAS - 1;
+                $diagonal = true;
+                while($i < MAXIMO_DE_LINEAS){
+                    $diagonal = $diagonal && $tablero[$i][$j] == $jugador;
+                    $i++;
+                    $j--;
+                }
+            }
+
+            if ($diagonal){
                 return true;
             }
 
             return false;
-        }
-
-        if (isset($_POST['limpiar'])) {
-            session_unset();
-            session_destroy();
-            header("Location: 3enraya.php");
-            exit;
-        } else {
-            {
-
-            }
         }
         ?>
     </section>
